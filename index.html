@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>chatmsg</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        main {
+            height: 100%;
+            width: 100%;
+        }
+
+        .item1 {
+            grid-area: header;
+            width: 100%;
+        }
+
+        .item2 {
+            grid-area: left;
+            position: fixed;
+            width: 40%;
+            left: 10%;
+            top: 20%;
+            background-color: #0000006e;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .item3 {
+            grid-area: right;
+            position: fixed;
+            width: 20%;
+            right: 10%;
+            top: 20%;
+            background-color: #0000006e;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .item4 {
+            grid-area: footer;
+            width: 100%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'header header'
+                'left right'
+                'footer footer';
+            gap: 10px;
+            background-color: #00000000;
+            padding: 150px;
+        }
+
+        .grid-container>div {
+            color: white;
+            text-align: left;
+            padding: 20px 20px 20px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="grid-container">
+            <div class="item1"></div>
+            <div class="item2">
+                <div class="msg1"></div>
+                <div class="msg2"></div>
+                <div class="msg3"></div>
+                <div class="msg4"></div>
+                <div class="msg5"></div>
+                <div class="msg6"></div>
+                <div class="msg7"></div>
+                <div class="msg8"></div>
+                <div class="msg9"></div>
+                <div class="msg10"></div>
+                <div class="msg11"></div>
+                <div class="msg12"></div>
+                <div class="msg13"></div>
+                <div class="msg14"></div>
+                <div class="msg15"></div>
+            </div>
+            <div class="item3">
+                <div class="pic_a"></div>
+                <div class="ip_address_a"></div>
+                <div class="name_a"></div>
+                <div class="phone_a"></div>
+                <div class="email_a"></div>
+
+                <div class="pic_b"></div>
+                <div class="ip_address_b"></div>
+                <div class="name_b"></div>
+                <div class="phone_b"></div>
+                <div class="email_b"></div>
+
+                <div class="pic_c"></div>
+                <div class="ip_address_c"></div>
+                <div class="name_c"></div>
+                <div class="phone_c"></div>
+                <div class="email_c"></div>
+            </div>
+            <div class="item4"></div>
+        </div>
+    </main>
+    <script>
+        require("./renderer.js");
+    </script>
+</body>
+
+</html>

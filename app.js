@@ -1,20 +1,63 @@
-var ipp = require('ipp');
-var fs = require('fs');
+const { app, BrowserWindow, screen } = require('electron')
+const path = require('path')
+// const url = require('url')
 
-fs.readFile('2022-10-19 12_47_07.535848.pdf', function (err, data) {
-    if (err)
-        throw err;
 
-    var printer = ipp.Printer("http://192.168.168.50/ipp");
-    var msg = {
-        "operation-attributes-tag": {
-            "requesting-user-name": "user",
-            "job-name": "scripted job",
-            "document-format": "application/pdf"
-        },
-        data: data
-    };
-    printer.execute("Print-Job", msg, function (err, res) {
-        console.log(res);
-    });
-});
+let win;
+
+function createWindow() {
+    const win = new BrowserWindow({
+        x: 0,
+        y: 0,
+        width: 800,
+        height: 600,
+        focusable: false,
+        transparent: true,
+        frame: false,
+        fullscreen: false,
+        alwaysOnTop: true,
+        skipTaskbar: true,
+        enableLargerThanScreen: false,
+        webPreferences: {
+            preload: path.join(__dirname, './js/preload.js'),
+            nodeIntegration: true,
+            contextIsolation: false,
+            nodeIntegrationInWorker: true,
+            webSecurity: false,
+            allowRunningInsecureContent: true
+        }
+    })
+
+    win.setSize(800, 600);
+    // //add mouse press through
+    //win.setIgnoreMouseEvents(true);
+
+    // Open the DevTools.
+    win.webContents.openDevTools();
+
+
+    win.loadFile('./index.html')
+}
+
+app.commandLine.appendSwitch('ignore-certificate-errors');
+
+//enable hardware acceleration
+app.disableHardwareAcceleration(true);
+
+app.whenReady().then(() => {
+    createWindow()
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow()
+        }
+    })
+})
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.

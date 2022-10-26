@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "electron .",
+    "electron": "ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,7 +18,12 @@
     "url": "https://github.com/HsienYu/playnplay-screen/issues"
   },
   "homepage": "https://github.com/HsienYu/playnplay-screen#readme",
+  "devDependencies": {
+    "electron": "^21.2.0"
+  },
   "dependencies": {
-    "ipp": "^2.0.1"
+    "axios": "^1.1.3",
+    "node-osc": "^8.0.6",
+    "python-shell": "^3.0.1"
   }
 }
