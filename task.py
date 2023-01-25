@@ -23,8 +23,8 @@ while True:
     print('uploading to google drive')
     time.sleep(10)
 
-    with fitz.open(getRandomFile(path_dirs)) as doc:
-        for page in doc:
-            text = page.get_text()
-            time.sleep(5)
-            print(text)
+    # with fitz.open(getRandomFile(path_dirs)) as doc:
+    #     for page in doc:
+    #         text = page.get_text()
+    #         time.sleep(5)
+    #         print(text)
